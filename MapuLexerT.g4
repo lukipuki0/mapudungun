@@ -1,31 +1,46 @@
 lexer grammar MapuLexerT;
 
+BEGIN: 'begin';
+END: 'end';
+
 // Palabras reservadas
-KIÑE: 'begin';
-EPU: 'end';
-KÜME: 'print';
-RÜF: 'var';
-ÜY: 'const';
-WEW: 'if';
-ELU: 'else';
-KIÑEL: 'while';
-KELLU: 'for';
+CONST: 'const';
+VAR: 'var';
+
+TYPE: 'type';
+
+INT: 'int';
+FLOAT: 'float';
+STRING: 'string';
+
+READ: 'read';
+PRINT: 'print';
+
+IF: 'if';
+ELSE: 'else';
+WHILE: 'while';
+FOR: 'for';
+
+//OPERADORES LOGICOS
+AND: '&&';
+OR: '||';
+
+//FUNCIONES
+SQRT: 'sqrt';
+COS: 'cos';
+SIN: 'sin';
+POW: 'pow';
 
 // Operadores y símbolos
-WI: '+';
-INAN: '-';
-INA: '*';
-KÜLAN: '/';
-ILEL: '=';
-KÜLA: ';';
-WE: ':';
-RANGI: '(';
-RANGIPA: ')';
-
-// Tipos de datos
-RAKI: 'int';
-PUKEM: 'float';
-DUN: 'string';
+PLUS: '+';
+MINUS: '-';
+MUL: '*';
+DIV: '/';
+ASSIGN: '=';
+SEMI: ';';
+COLON: ':';
+LPAREN: '(';
+RPAREN: ')';
 
 // Identificadores y Constantes
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
@@ -35,10 +50,5 @@ STRING_LIT: '"' .*? '"';
 
 // Caracteres ignorados
 WS: [ \t\r\n]+ -> skip;
-
-// Funciones matemáticas
-MÜTEN: 'sqrt';
-EPEY: 'cos';
-PEY: 'sin';
 
 
