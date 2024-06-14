@@ -2,7 +2,7 @@ parser grammar MapuParserT;
 
 options { tokenVocab=MapuLexerT; }
 
-program: KIÑE statement+ EPU ;
+program   : BEGIN statement+ END;
 
 statement: varDeclaration
          | constDeclaration
@@ -12,21 +12,21 @@ statement: varDeclaration
          | ifStatement
          | whileStatement
          | forStatement
-         | expr KÜLA
+         | expr
          ;
 
-varDeclaration: RÜF ID ILEL expr KÜLA ;
-constDeclaration: ÜY ID ILEL expr KÜLA ;
-typeDeclaration: DATATYPE ID WE type KÜLA ;
-printStatement: KÜME RANGI expr RANGIPA KÜLA ;
-readStatement: REPEAPAD RANGI ID RANGIPA KÜLA ;
-ifStatement: WEW RANGI expr RANGIPA statement (ELU statement)? ;
-whileStatement: KIÑEL RANGI expr RANGIPA statement ;
-forStatement: KELLU RANGI expr KÜLA expr KÜLA expr RANGIPA statement ;
+varDeclaration: VAR ID ASSIGN expr ;
+constDeclaration: CONST ID ASSIGN expr ;
+typeDeclaration: TYPE ID COLON datatype ;
+printStatement: PRINT LPAREN expr RPAREN ;
+readStatement: READ LPAREN ID RPAREN ;
+ifStatement: IF LPAREN expr RPAREN statement (ELSE statement)? ;
+whileStatement: WHILE LPAREN expr RPAREN statement ;
+forStatement: FOR LPAREN expr SEMI expr SEMI expr RPAREN statement ;
 
 expr: expr (AND | OR) expr
-    | expr (WI | INAN | INA | KÜLAN) expr
-    | RANGI expr RANGIPA
+    | expr (PLUS | MINUS | MUL | DIV) expr
+    | LPAREN expr RPAREN
     | ID
     | INT_LIT
     | FLOAT_LIT
@@ -34,6 +34,6 @@ expr: expr (AND | OR) expr
     | functionCall
     ;
 
-functionCall: (MÜTEN | EPEY | PEY) RANGI expr RANGIPA ;
+functionCall: (SQRT | COS | SIN | POW) LPAREN expr RPAREN ;
 
-type: RAKI | PUKEM | DUN ;
+datatype: INT | FLOAT | STRING ;
