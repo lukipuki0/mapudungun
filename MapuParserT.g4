@@ -1,40 +1,39 @@
-parser grammar MapuParserT;
+parser grammar parserPu;
 
 options { tokenVocab=MapuLexerT; }
 
-program         : statement+ ;
+program: KIÑE statement+ EPU ;
 
-statement       : variableDeclaration
-                | constantDeclaration
-                | assignment
-                | printStatement
-                | inputStatement
-                | ifStatement
-                | whileStatement
-                | forStatement
-                ;
+statement: varDeclaration
+         | constDeclaration
+         | typeDeclaration
+         | printStatement
+         | readStatement
+         | ifStatement
+         | whileStatement
+         | forStatement
+         | expr KÜLA
+         ;
 
-variableDeclaration : VAR ID EQ dataType EQ expression PUYCO ;
-constantDeclaration : CONSTANT ID EQ dataType EQ expression PUYCO ;
-assignment          : ID EQ expression PUYCO ;
+varDeclaration: RÜF ID ILEL expr KÜLA ;
+constDeclaration: ÜY ID ILEL expr KÜLA ;
+typeDeclaration: DATATYPE ID WE type KÜLA ;
+printStatement: KÜME RANGI expr RANGIPA KÜLA ;
+readStatement: REPEAPAD RANGI ID RANGIPA KÜLA ;
+ifStatement: WEW RANGI expr RANGIPA statement (ELU statement)? ;
+whileStatement: KIÑEL RANGI expr RANGIPA statement ;
+forStatement: KELLU RANGI expr KÜLA expr KÜLA expr RANGIPA statement ;
 
-printStatement  : PRINT LEFTP expression RIGHTP PUYCO ;
-inputStatement  : INPUT LEFTP ID RIGHTP PUYCO ;
+expr: expr (AND | OR) expr
+    | expr (WI | INAN | INA | KÜLAN) expr
+    | RANGI expr RANGIPA
+    | ID
+    | INT_LIT
+    | FLOAT_LIT
+    | STRING_LIT
+    | functionCall
+    ;
 
-ifStatement     : IF LEFTP expression RIGHTP THEN block (ELSE block)? ;
-whileStatement  : WHILE LEFTP expression RIGHTP DO block ;
-forStatement    : FOR LEFTP assignment expression PUYCO expression RIGHTP DO block TO expression PUYCO;
+functionCall: (MÜTEN | EPEY | PEY) RANGI expr RANGIPA ;
 
-block           : LEFTP statement* RIGHTP ;
-
-expression      : expression (SUM | RES) expression
-                | expression (MUL | DIV) expression
-                | LEFTP expression RIGHTP
-                | functionCall
-                | ID
-                | NUMBER
-                ;
-
-functionCall    : (SQRT | POWER | SIN | COS) LEFTP expression RIGHTP ;
-
-dataType        : INT | FLOAT | STRING ; 
+type: RAKI | PUKEM | DUN ;
