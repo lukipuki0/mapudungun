@@ -1,4 +1,4 @@
-parser grammar parserPu;
+parser grammar MapuParserT;
 
 options { tokenVocab=MapuLexerT; }
 
