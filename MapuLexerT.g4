@@ -1,57 +1,44 @@
 lexer grammar MapuLexerT;
 
-// Palabras clave
-BEGIN: 'begin';
-END: 'end';
-LEFTP: '(';
-RIGHTP: ')';
+// Palabras reservadas
+KIÑE: 'begin';
+EPU: 'end';
+KÜME: 'print';
+RÜF: 'var';
+ÜY: 'const';
+WEW: 'if';
+ELU: 'else';
+KIÑEL: 'while';
+KELLU: 'for';
 
-// Espacios en blanco
-WS : [ \t\r\n]+ -> skip;
+// Operadores y símbolos
+WI: '+';
+INAN: '-';
+INA: '*';
+KÜLAN: '/';
+ILEL: '=';
+KÜLA: ';';
+WE: ':';
+RANGI: '(';
+RANGIPA: ')';
 
 // Tipos de datos
-INT : 'int';
-FLOAT : 'float';
-STRING : 'string';
+RAKI: 'int';
+PUKEM: 'float';
+DUN: 'string';
 
-// Variables y constantes
-VAR : 'var';
-CONSTANT : 'const';
+// Identificadores y Constantes
+ID: [a-zA-Z_][a-zA-Z0-9_]*;
+INT_LIT: [0-9]+;
+FLOAT_LIT: [0-9]+'.'[0-9]+;
+STRING_LIT: '"' .*? '"';
 
-// Identificadores y números
-ID : [a-zA-Z][a-zA-Z_0-9]*;
-NUMBER : [0-9]+ ('.' [0-9]+)?;
-
-// Operaciones de entrada y salida
-PRINT : 'print';
-INPUT : 'input';
-
-// Estructuras de control
-IF : 'if';
-ELSE: 'else';
-THEN : 'then';
-WHILE : 'while';
-DO : 'do';
-FOR : 'for';
-TO : 'to';
-
-// Operadores lógicos
-AND : 'and';
-OR : 'or';
-
-// Operadores aritméticos
-SUM : '+';
-RES : '-';
-DIV : '/';
-MUL : '*';
-EQ : '=';
-
-// Delimitadores
-PUYCO : ';';
+// Caracteres ignorados
+WS: [ \t\r\n]+ -> skip;
 
 // Funciones matemáticas
-SQRT : 'sqrt';
-POWER : 'power';
-SIN : 'sin';
-COS : 'cos';
+MÜTEN: 'sqrt';
+EPEY: 'cos';
+PEY: 'sin';
+
 
