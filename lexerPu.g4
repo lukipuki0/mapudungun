@@ -1,46 +1,32 @@
 lexer grammar lexerPu;
 
-BEGIN: 'begin';
-END: 'end';
-
-// Palabras reservadas
-CONST: 'const';
-VAR: 'var';
-
-TYPE: 'type';
-
-INT: 'int';
-FLOAT: 'float';
-STRING: 'string';
-
-READ: 'read';
-PRINT: 'print';
-
-IF: 'if';
-ELSE: 'else';
-WHILE: 'while';
-FOR: 'for';
-
-//OPERADORES LOGICOS
-AND: '&&';
-OR: '||';
-
-//FUNCIONES
-SQRT: 'sqrt';
-COS: 'cos';
-SIN: 'sin';
-POW: 'pow';
+BEGIN: 'kine';
+END: 'epu';
+PRINT: 'kume';
+VAR: 'ruf';
+CONST: 'uy';
+IF: 'wew';
+ELSE: 'elu';
+WHILE: 'kiñel';
+FOR: 'kellu';
 
 // Operadores y símbolos
-PLUS: '+';
-MINUS: '-';
-MUL: '*';
-DIV: '/';
-ASSIGN: '=';
-SEMI: ';';
-COLON: ':';
-LPAREN: '(';
-RPAREN: ')';
+PLUS: 'wi';
+MINUS: 'inan';
+MUL: 'ina';
+DIV: 'kulan';
+ASSIGN: 'ilel';
+EQUALL: 'kuñe';
+SEMI: 'kula';
+COLON: 'we';
+LPAREN: 'rangi';
+RPAREN: 'rangipa';
+
+
+// Tipos de datos
+INT: 'raki';
+FLOAT: 'pukem';
+STRING: 'dun';
 
 // Identificadores y Constantes
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
@@ -50,3 +36,9 @@ STRING_LIT: '"' .*? '"';
 
 // Caracteres ignorados
 WS: [ \t\r\n]+ -> skip;
+
+// Funciones matemáticas
+SQRT: 'muten';
+COS: 'epey';
+SIN: 'pey';
+POW: 'kunen';
